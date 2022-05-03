@@ -1,0 +1,41 @@
+//Hier staan alle variablen in
+
+$fon-stack: Arial, Helvetica, sans-serif;
+$licht-kleur: #f4f4f4;
+$standaard-kleur: #00e;
+$tweede-kleur: #7aab49;
+
+//Functie om de kleur te veranderen gebaseerd op achtergrond 
+@function set-text-color($color) {
+    @if(lightness($color) > 70) {
+        @return #333;
+    } @else {
+        @return #fff;
+    }
+}
+
+// Achtergrond en text kleur
+@mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color);
+}
+
+// Margin en paddin klasses
+$spaceamounts: (1,2,3,4,5);
+
+@each $space in $spaceamounts {
+    .m-#{$space} {
+        margin: #{$space}rem;
+    }
+    .my-#{$space} {
+        margin: #{$space}rem 0;
+    }
+
+    .p-#{$space} {
+        padding: #{$space}rem;
+    }
+    .my-#{$space} {
+        padding: #{$space}rem 0;
+    }
+
+}
